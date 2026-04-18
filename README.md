@@ -7,6 +7,8 @@
 ```
 ClaudeCodeハンズオン準備/
 ├── README.md                        # このファイル
+├── CLAUDE.md                        # Claude Code 起動時の自動ルール (感想収集)
+├── .gitignore                       # user-comment.md 等を除外
 ├── slides.md                        # Marp スライド本体 (メイン成果物)
 ├── handout/
 │   ├── prerequisites.md             # 参加者事前準備リスト
@@ -17,6 +19,7 @@ ClaudeCodeハンズオン準備/
 │   ├── sample-minutes.md            # 応用編デモ用サンプル議事録
 │   └── hook-demo/
 │       └── README.md                # 基礎編 D2 Hook デモ用サンドボックス
+├── user-comment.md                  # (gitignore) 各参加者がClaudeと対話して作る感想ログ
 └── Anthropic Claude Code Usecase/
     └── How-Anthropic-teams-use-Claude-Code_v2.pdf  # 元ネタPDF
 ```

@@ -98,20 +98,16 @@ npm install -g @googleworkspace/cli    # npm
 詳細は `prerequisites.md` の「6. gws CLI + Google Cloud 設定」参照。
 
 ### Q. `gws auth login` で `Access blocked: This app's request is invalid`
-**A.** OAuth同意画面の **Test users** に自分のアカウントが追加されていません。
-<https://console.cloud.google.com/apis/credentials/consent> で追加してください。
+**A.** User Type によって対処が違います:
+- **External (個人Gmail)** の場合: OAuth同意画面の **Test users** に自分のアカウントを追加
+  <https://console.cloud.google.com/apis/credentials/consent>
+- **Internal (Google Workspace組織)** の場合: Test users は不要。別の原因(APIが有効化されていない、スコープ違い等)を疑ってください
+
+💡 Google Workspaceアカウントを使っているなら User Type を **Internal** にすれば、そもそもこのエラーは起きません。
 
 ### Q. `accessNotConfigured` エラー
 **A.** 呼ぼうとしたAPIが GCPプロジェクトで有効化されていません。
 エラーメッセージに含まれるURLをクリック → 「有効にする」をクリック。
-
-### Q. `gws auth setup` で `gcloud: command not found`
-**A.** 自動セットアップには gcloud CLI が必要です。
-```bash
-brew install --cask google-cloud-sdk
-gcloud auth login
-```
-手動セットアップなら gcloud は不要 (prerequisites.md 参照)。
 
 ### Q. ログイン時にスコープが多すぎてエラー
 **A.** テストモードは最大約25スコープまで。必要なサービスだけ指定:

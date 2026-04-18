@@ -31,14 +31,26 @@
 ```javascript
 #!/usr/bin/env node
 const input = JSON.parse(require('fs').readFileSync(0, 'utf-8'));
-const command = input.tool_input?.command ?? '';
 
+// Bash 以外のツールは対象外 (Read/Edit などに ; を含むパスが渡っても誤検出しない)
+if (input.tool_name !== 'Bash') {
+  process.exit(0);
+}
+
+const command = input.tool_input?.command ?? '';
 if (/\s(&&|\|\||;)\s/.test(command) || /[|;]{2}/.test(command)) {
   console.error('コマンドに複合コマンド(&&, ||, ;)を使わないでください。各コマンドを個別に実行してください。');
   process.exit(2);  // PreToolUse の拒否コード
 }
 process.exit(0);
 ```
+
+**二重のBash限定**:
+
+1. settings.json の `matcher: "Bash"` でフックの発火を絞る
+2. スクリプト側の `tool_name !== "Bash"` でセーフティネット
+
+どちらか一方でも十分だが、両方かけると運用中に matcher を外しても誤爆しないにゃん 🐾
 
 ## 参考: settings.json (抜粋)
 

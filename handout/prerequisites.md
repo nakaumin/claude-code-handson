@@ -52,13 +52,23 @@ claude
 
 ---
 
-## ☆ 5. サンプルリポジトリ (講師が事前公開)
+## ★ 5. ハンズオン教材リポジトリを clone
 
-当日の基礎編デモ用。講師から案内された URL を clone:
+**当日の D0 デモで全員一斉に使います**。事前に clone できればスムーズにゃ。
+
 ```bash
-git clone <URL>
-cd <repo>
+git clone https://github.com/nakaumin/claude-code-handson.git
+cd claude-code-handson
+claude    # ここで起動
 ```
+
+**同梱されているもの**:
+- `slides.md` — Marp スライド本体
+- `handout/` — 配布資料 (このファイルも含む)
+- `demo/` — 応用編デモ用サンプル議事録
+- **`CLAUDE.md`** — 起動時に自動読込、感想を対話的に `user-comment.md` に追記してくれる
+
+> 💡 `user-comment.md` はあなた専用のログファイル。あとで見返せるようになっています。
 
 ---
 
@@ -95,34 +105,35 @@ gws --help         # サービス一覧が出ればOK
 
 ### 6-2. Google Cloud Console の設定
 
-`gws` は OAuth で Google API を叩くため、**GCP プロジェクト** と **OAuth クライアントID** が必要です。
+`gws` は OAuth で Google API を叩くため、**GCP プロジェクト** と **OAuth クライアントID** が必要です。以下の5ステップで完了します。
 
-#### 方法A: 自動セットアップ (推奨、gcloud CLIが必要)
+**① GCPプロジェクトを作成** ← まずこれが必要
 
-```bash
-# gcloud CLI を先にインストール
-brew install --cask google-cloud-sdk
-gcloud auth login
+<https://console.cloud.google.com/projectcreate>
 
-# gws の自動セットアップ
-gws auth setup
-# → GCPプロジェクト作成 + API有効化 + OAuth同意画面 + ログイン を一気通貫
-```
+- プロジェクト名を入力(例: `my-gws-cli`)
+- 組織が紐づいている場合は適切な組織を選択
+- 既存プロジェクトがあれば再利用でOK
 
-#### 方法B: 手動セットアップ
-
-**① GCPプロジェクトを用意**
-
-<https://console.cloud.google.com/> で新規プロジェクト作成。
-(既存プロジェクトでも可)
+作成後、プロジェクトIDが発行される(これ以降のURLで `?project=<ID>` に使う)
 
 **② OAuth 同意画面を設定**
 
 <https://console.cloud.google.com/apis/credentials/consent>
 
-- **User Type**: External (Testモードで OK)
-- **アプリ情報**: アプリ名・サポートメール・デベロッパーメール を入力
-- **Test users**: ⚠️ **必ず自分のGoogleアカウントを追加** (これ忘れると `Access blocked` エラー)
+**User Type の選び方が重要にゃ**:
+
+| あなたのアカウント | User Type | Test users |
+|---|---|---|
+| **Google Workspace (会社/組織)** | **Internal** | 不要 ✨ |
+| 個人の Gmail | External (Testモード) | 必須 ⚠️ |
+
+- **Internal を選べる場合は断然これが楽**: 公開審査不要、Test users 登録不要、組織メンバーなら全員使える
+- **Externalを選んだ場合のみ**:
+  - アプリ情報(アプリ名・サポートメール・デベロッパーメール)を入力
+  - **Test users に自分のGoogleアカウントを必ず追加** (これ忘れると `Access blocked` エラー)
+
+> 💡 一度 Internal で作成すれば、その組織内の他のメンバーも同じ client_secret.json を使い回せます
 
 **③ OAuth クライアントIDを作成**
 
