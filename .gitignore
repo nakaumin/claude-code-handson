@@ -1,0 +1,14 @@
+# 参加者ごとに生成される感想ログ (各自のローカルのみ)
+user-comment.md
+
+# Claude Code セッション関連
+.claude/plans/
+.claude/memory/
+
+# macOS
+.DS_Store
+
+# エディタ
+.vscode/
+.idea/
+*.swp
