@@ -16,7 +16,6 @@ ClaudeCodeハンズオン準備/
 │   ├── comparison.md                # Connectors vs gws-skill 詳細比較
 │   └── faq.md                       # トラブルシュート FAQ
 ├── demo/
-│   ├── sample-minutes.md            # 応用編デモ用サンプル議事録
 │   └── hook-demo/
 │       └── README.md                # 基礎編 D2 Hook デモ用サンドボックス
 ├── user-comment.md                  # (gitignore) 各参加者がClaudeと対話して作る感想ログ
@@ -75,7 +74,7 @@ npx @marp-team/marp-cli slides.md --html
 - **D4 (Gmail Connectors)**: OAuth 済みか確認、未読メールが数通あること
 - **D5 (Sheets gws-skill)**: テスト用スプレッドシートID を事前準備
 - **D6 (ハイブリッド)**: カレンダー予定を午後に1-2件入れておく
-- **応用編**: `demo/sample-minutes.md` を Google Docs にアップして ID を控える
+- **応用編**: 自分の `user-comment.md`(D0 で蓄積される)があれば即実行OK
 
 ### 保険
 

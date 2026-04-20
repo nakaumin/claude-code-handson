@@ -152,20 +152,23 @@ mv ~/Downloads/client_secret_*.json ~/.config/gws/client_secret.json
 
 **④ 使う API を有効化**
 
-<https://console.cloud.google.com/apis/library> から以下を有効化:
+<https://console.cloud.google.com/apis/library> から有効化します。
 
-| API | 用途 |
-|---|---|
-| Gmail API | メール送受信 |
-| Google Drive API | ファイル管理 |
-| Google Sheets API | スプレッドシート |
-| Google Calendar API | 予定管理 |
-| Google Docs API | ドキュメント |
-| Google Chat API | チャット |
-| Google Meet API | 会議管理 |
+**今回のデモで使うAPI**(どのデモで必要かの対応表):
+
+| API | 必要なデモ | 用途 |
+|---|---|---|
+| Google Sheets API | D5 / 応用編 | スプレッドシート読書き |
+| Google Docs API | D6 / 応用編 | ドキュメント作成・読取 |
+| Google Drive API | D5 / D6 / 応用編 | Sheets・Docs 作成の依存 API |
+| Google Calendar API | D6 | 予定取得 |
+| Gmail API | 応用編 | メール下書き作成 |
+| Google Chat API | D6 / 応用編 | メッセージ送信 |
 
 > 💡 **Tips**: 全部有効化しなくても、未有効APIを呼んだ時 `gws` が
 > 「このAPIを有効化するURL」を自動で案内してくれます。必要になった時でOK。
+>
+> 急ぐ場合は、最低限 **Sheets / Drive / Docs** を有効化しておけば D5 までは動きます。
 
 **⑤ ログイン**
 
@@ -225,10 +228,17 @@ op run --no-masking --env-file=.env -- gws drive files list
 
 ---
 
-## ☆ 7. Figma アカウント (基礎編 D3 体験者向け)
+## ☆ 7. スクショ素材の準備 (基礎編 D3 体験者向け)
 
-スクショ貼付デモを自分の手でも試したい方向け。
-無料アカウントで十分: [figma.com](https://www.figma.com/)
+D3 のスクショ貼付デモを自分で試したい方は、お好みの Webサイトのスクショを手元に用意しておくとスムーズにゃ。
+
+**素材例**:
+- GitHub / Zenn / Notion / Twitter など普段使うサイト
+- お気に入りのランディングページ
+- 既存プロダクトのUI
+- 手書きホワイトボードの写真(iPhoneからAirDropでもOK)
+
+Figma / Sketch のmockupがあればもちろんそれでもOK(アカウントは必須ではない)。
 
 ---
 
